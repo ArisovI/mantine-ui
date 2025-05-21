@@ -8,7 +8,6 @@ import {
   ActionIcon,
 } from '@mantine/core'
 import { Table } from '../../../ui/table/table'
-import { useTodosList } from '../../../hooks/use-todos-list/use-todos-list'
 import {
   HiArchiveBoxXMark,
   HiMiniPencilSquare,
@@ -18,6 +17,7 @@ import { modals } from '@mantine/modals'
 import { TodosCreate } from '../todos-create/todos-create'
 import { TodosDelete } from '../todos-delete/todos-delete'
 import { TodosEdit } from '../todos-edit/todos-edit'
+import { useTodosList } from '../../../hooks/todos/use-todos-list/use-todos-list'
 
 export const TodosList = () => {
   const { todos } = useTodosList()

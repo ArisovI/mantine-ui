@@ -1,5 +1,5 @@
 import { RouterProvider } from 'react-router-dom'
-import { router } from '../routes/router'
+import { router } from '../router/router'
 import { MantineProvider } from '@mantine/core'
 import { theme } from '../theme/theme'
 import { ModalsProvider } from '@mantine/modals'

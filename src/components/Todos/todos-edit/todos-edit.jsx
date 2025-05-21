@@ -1,15 +1,41 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { TodosForm } from '../todos-form/todos-form'
+import { api } from '../../../api/api'
 
 export const TodosEdit = ({ id }) => {
-  const fetchTodo = () => {
-    fetch(`https://dummyjson.com/todos/${id}`)
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+  const [data, setData] = useState(null)
+
+  const fetchTodo = async () => {
+    const { data } = await api(`todos/${id}`)
+    setData(data)
+  }
+
+  const fetchEditTodo = async (body) => {
+    const { data } = await api.patch(`todos/${id}`, body)
+    return data
   }
 
   useEffect(() => {
     fetchTodo()
   }, [id])
-  return <TodosForm title="Сохранить" />
+
+  const editFn = async (values) => {
+    await fetchEditTodo(values)
+  }
+
+  return (
+    <>
+      {data !== null && (
+        <TodosForm
+          title="Сохранить"
+          submitFn={editFn}
+          initialValues={{
+            todo: data.todo,
+            completed: data.completed,
+            userId: data.userId > 30 ? null : String(data.userId),
+          }}
+        />
+      )}
+    </>
+  )
 }
