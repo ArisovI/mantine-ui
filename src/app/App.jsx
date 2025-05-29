@@ -8,12 +8,15 @@ import './global.css'
 import '@mantine/notifications/styles.css'
 import '@mantine/core/styles.css'
 import { Notifications } from '@mantine/notifications'
+import { AuthProvider } from '../context/auth-provider'
 
 const App = () => {
   return (
     <MantineProvider theme={theme}>
       <ModalsProvider>
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </ModalsProvider>
       <Notifications autoClose={3000} />
     </MantineProvider>

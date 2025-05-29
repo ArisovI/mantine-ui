@@ -10,6 +10,9 @@ const Home = () => {
           <List.Item>
             <Link to="/todos">Todos</Link>
           </List.Item>
+          <List.Item>
+            <Link to="/login">Login</Link>
+          </List.Item>
         </Flex>
       </List>
     </Flex>

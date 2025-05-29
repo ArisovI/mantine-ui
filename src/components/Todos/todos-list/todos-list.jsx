@@ -18,9 +18,12 @@ import { TodosCreate } from '../todos-create/todos-create'
 import { TodosDelete } from '../todos-delete/todos-delete'
 import { TodosEdit } from '../todos-edit/todos-edit'
 import { useTodosList } from '../../../hooks/todos/use-todos-list/use-todos-list'
+import { useContext } from 'react'
+import { AuthCountext } from '../../../context/auth-context'
 
 export const TodosList = () => {
   const { todos } = useTodosList()
+  const { user } = useContext(AuthCountext)
 
   const createFn = () => {
     modals.open({
@@ -64,6 +67,7 @@ export const TodosList = () => {
 
   return (
     <Stack gap={12} p={20}>
+      <h1>{user?.username}</h1>
       <Flex gap={12} align={'center'}>
         <Button>Back</Button>
         <Title>Todos list</Title>
